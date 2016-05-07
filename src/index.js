@@ -27,7 +27,20 @@ Consuela.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest,
 };
 
 Consuela.prototype.intentHandlers = {
-  "trainStatus": function(intent, session, response) {
-    handletrainsStatusRequest(intent, session, response);
+  "TrainStatus": function(intent, session, response) {
+    handleTrainStatusRequest(intent, session, response);
   };
+};
+
+function handleWelcomeRequest(response) {
+  // hi, whant to check your subway status today?  
+};
+
+function handleTrainStatusRequest (intent, session, response) {
+  var TrainStatus = 'delay';
+  var speechOutput;
+
+  speechOutput = 'hey your train is dalay. sorry.. fuck you'
+
+  response.tellWithCard(speechOutput, "Consuela", speechOutput)
 };
