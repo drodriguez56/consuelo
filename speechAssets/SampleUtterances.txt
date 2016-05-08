@@ -1,0 +1,6 @@
+TrainStatus get the train status
+TrainStatus what is the train status
+TrainStatus tell me the train status
+TrainTimes when is the nex train comming
+TrainTimes get times for {Station} station
+TrainTimes when is the next train arriving 
