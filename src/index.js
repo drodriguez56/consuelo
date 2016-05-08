@@ -7,11 +7,6 @@ var http = require("http");
 
 var AlexaSkill = require("./AlexaSkill");
 
-var STATIONS={
-  'Whitlock': '612N' ,
-  'ninetysixth': '625S'
-};
-
 var Consuela = function() {
   AlexaSkill.call(this, APP_ID);
 };
@@ -55,7 +50,11 @@ function handleWelcomeRequest(response) {
   
   response.ask(speechOutput, repromptText);
 };
-
+var STATIONS={
+  'Whitlock': '612N',
+  'canal': '135N',
+  'spring': '638S'
+};
 function handleTrainTimeRequest(intent, session, response) {
   var speechOutput;
  var innerResponse = response; 
@@ -74,8 +73,9 @@ function handleTrainTimeRequest(intent, session, response) {
       var station = STATIONS[stationSlot.value];
       console.log(station)
       var times = parseData(station);
-      var lastTime = times.join(", ");
-      speechOutput = "train arrives in, " + lastTime + " minutes."
+      times[times.length -1] = "and " + times[times.length - 1]
+      var trainTimes = times.join(", ");
+      speechOutput = "The next train arrival times are in: " + trainTimes + " minutes."
       innerResponse.tellWithCard(speechOutput, "Consuela", speechOutput)
     }
   });
